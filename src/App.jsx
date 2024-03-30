@@ -42,94 +42,94 @@ const initialState={
       "correctOption": 1,
       "points": 10
     },
-    // {
-      //   "question": "I want to learn how to play a new board game or card game. I would:",
-      //   "options": [
-        //     "Use the diagrams that explain the various stages, moves and strategies in the game.",
-    //     "Read the instructions.",
-    //     "Watch others play the game before joining in.",
-    //     "Listen to somebody explaining it and ask questions."
-    //   ],
-    //   "correctOption": 3,
-    //   "points": 10
-    // },
-    // {
-      //   "question": "I want to save more money and to decide between a range of options. I would:",
-      //   "options": [
-        //     "Use graphs showing different options for different time periods.",
-        //     "Read a print brochure that describes the options in detail.",
-        //     "Talk with an expert about the options.",
-        //     "Consider examples of each option using my financial information."
-      //   ],
-      //   "correctOption": 2,
-      //   "points": 10
-      // },
-      // {
-        //   "question": "I am having trouble assembling a wooden table that came in parts (kitset). I would:",
-        //   "options": [
-          //     "Watch a video of a person assembling a similar table.",
-          //     "Study diagrams showing each stage of the assembly.",
-          //     "Ask for advice from someone who assembles furniture.",
-          //     "Read the instructions that came with the table."
-          //   ],
-          //   "correctOption": 1,
-          //   "points": 10
-          // },
-          // {
-            //   "question": "I want to learn about a new project. I would ask for:",
-            //   "options": [
-              //     "Examples where the project has been used successfully.",
-              //     "A written report describing the main features of the project.",
-              //     "An opportunity to discuss the project.",
-              //     "Diagrams to show the project stages with charts of benefits and costs."
-              //   ],
-              //   "correctOption": 2,
-              //   "points": 10
-              // },
-              // {
-                //   "question": "When choosing a career or area of study, these are important for me:",
-                //   "options": [
-                  //     "Using words well in written communications.",
-        //     "Working with designs, maps or charts.",
-        //     "Communicating with others through discussion.",
-        //     "Applying my knowledge in real situations."
-        //   ],
-        //   "correctOption": 3,
-        //   "points": 10
-        // },
-        // {
-          //   "question": "When finding my way, I:",
-          //   "options": [
-            //     "Like to read instructions from GPS or instructions that have been written.",
-            //     "Rely on verbal instructions from GPS or from someone traveling with me.",
-            //     "Rely on paper maps or GPS maps.",
-            //     "Head in the general direction to see if I can find my destination without instructions."
-            //   ],
-            //   "correctOption": 0,
-            //   "points": 10
-            // },
-            // {
-              //   "question": "I want to learn how to take better photos. I would:",
-              //   "options": [
-                //     "Use diagrams showing the camera and what each part does.",
-                //     "Use examples of good and poor photos showing how to improve them.",
-                //     "Use the written instructions about what to do.",
-                //     "Ask questions and talk about the camera and its features."
-                //   ],
-                //   "correctOption": 1,
-                //   "points": 10
-                // },
-                // {
-                  //   "question": "I want to find out more about a tour that I am going on. I would:",
-                  //   "options": [
-        //     "Use a map and see where the places are.",
-        //     "Look at details about the highlights and activities on the tour.",
-        //     "Talk with the person who planned the tour or others who are going on the tour.",
-        //     "Read about the tour on the itinerary."
-        //   ],
-        //   "correctOption": 2,
-        //   "points": 10
-        // },
+    {
+        "question": "I want to learn how to play a new board game or card game. I would:",
+        "options": [
+            "Use the diagrams that explain the various stages, moves and strategies in the game.",
+        "Read the instructions.",
+        "Watch others play the game before joining in.",
+        "Listen to somebody explaining it and ask questions."
+      ],
+      "correctOption": 3,
+      "points": 10
+    },
+    {
+        "question": "I want to save more money and to decide between a range of options. I would:",
+        "options": [
+            "Use graphs showing different options for different time periods.",
+            "Read a print brochure that describes the options in detail.",
+            "Talk with an expert about the options.",
+            "Consider examples of each option using my financial information."
+        ],
+        "correctOption": 2,
+        "points": 10
+      },
+      {
+          "question": "I am having trouble assembling a wooden table that came in parts (kitset). I would:",
+          "options": [
+              "Watch a video of a person assembling a similar table.",
+              "Study diagrams showing each stage of the assembly.",
+              "Ask for advice from someone who assembles furniture.",
+              "Read the instructions that came with the table."
+            ],
+            "correctOption": 1,
+            "points": 10
+          },
+          {
+              "question": "I want to learn about a new project. I would ask for:",
+              "options": [
+                  "Examples where the project has been used successfully.",
+                  "A written report describing the main features of the project.",
+                  "An opportunity to discuss the project.",
+                  "Diagrams to show the project stages with charts of benefits and costs."
+                ],
+                "correctOption": 2,
+                "points": 10
+              },
+              {
+                  "question": "When choosing a career or area of study, these are important for me:",
+                  "options": [
+                      "Using words well in written communications.",
+            "Working with designs, maps or charts.",
+            "Communicating with others through discussion.",
+            "Applying my knowledge in real situations."
+          ],
+          "correctOption": 3,
+          "points": 10
+        },
+        {
+            "question": "When finding my way, I:",
+            "options": [
+                "Like to read instructions from GPS or instructions that have been written.",
+                "Rely on verbal instructions from GPS or from someone traveling with me.",
+                "Rely on paper maps or GPS maps.",
+                "Head in the general direction to see if I can find my destination without instructions."
+              ],
+              "correctOption": 0,
+              "points": 10
+            },
+            {
+                "question": "I want to learn how to take better photos. I would:",
+                "options": [
+                    "Use diagrams showing the camera and what each part does.",
+                    "Use examples of good and poor photos showing how to improve them.",
+                    "Use the written instructions about what to do.",
+                    "Ask questions and talk about the camera and its features."
+                  ],
+                  "correctOption": 1,
+                  "points": 10
+                },
+                {
+                    "question": "I want to find out more about a tour that I am going on. I would:",
+                    "options": [
+            "Use a map and see where the places are.",
+            "Look at details about the highlights and activities on the tour.",
+            "Talk with the person who planned the tour or others who are going on the tour.",
+            "Read about the tour on the itinerary."
+          ],
+          "correctOption": 2,
+          "points": 10
+        },
         
         
       ],

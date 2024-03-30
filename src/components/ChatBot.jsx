@@ -8,6 +8,8 @@ var category = 0;
 
 var categoryy= 'verbal';
 function ChatBot({categor,setCategory}) {
+  
+const [topic, setTopic] = useState("");
   const [message, setMessage] = useState("");
   const [selectedValue, setSelectedValue] = useState(0);
   const [personType, setpersontype] = useState("");
@@ -21,168 +23,165 @@ function ChatBot({categor,setCategory}) {
   const [subject,setSubject] = useState('Science')
   const prompts =[
     [ // Auditory
-      [ // point-wise
-        [ // Beginner
-          "Illustrate the foundational concepts of {topic} using analogies and simple explanations to make complex ideas more accessible.",
-          "Provide a beginner-friendly overview of {topic}, emphasizing practical relevance and real-life applications to engage learners.",
-          "Describe the basic principles of {topic} using clear and concise language, ensuring that beginners can follow along easily."
+        [ // point-wise
+            [ // Beginner
+                `Illustrate the foundational concepts of ${topic} using analogies and simple explanations to make complex ideas more accessible.`,
+                `Provide a beginner-friendly overview of ${topic}, emphasizing practical relevance and real-life applications to engage learners.`,
+                `Describe the basic principles of ${topic} using clear and concise language, ensuring that beginners can follow along easily.`
+            ],
+            [ // Intermediate
+                `Discuss the practical implications of ${topic} in various contexts, drawing connections between theory and real-world practice.`,
+                `Examine the underlying principles of ${topic} and their significance in solving complex problems across different domains.`,
+                `Explore the interdisciplinary aspects of ${topic}, exploring its connections with diverse fields and disciplines.`
+            ],
+            [ // Advanced
+                `Delve into the advanced theories and methodologies of ${topic}, exploring cutting-edge research and developments.`,
+                `Discuss the cutting-edge developments in ${topic}, exploring emerging technologies and their potential impact on the field.`,
+                `Analyze the advanced theories and methodologies of ${topic}, providing critical insights into its applications and limitations.`
+            ]
         ],
-        [ // Intermediate
-          "Discuss the practical implications of {topic} in various contexts, drawing connections between theory and real-world practice.",
-          "Examine the underlying principles of {topic} and their significance in solving complex problems across different domains.",
-          "Explore the interdisciplinary aspects of {topic}, exploring its connections with diverse fields and disciplines."
+        [ // with example
+            [ // Beginner
+                `Explain the basic principles of ${topic} using everyday language and relatable examples to aid comprehension.`,
+                `Break down the key components of ${topic} into bite-sized pieces, making it easy for beginners to grasp the core concepts.`,
+                `Provide a beginner-friendly overview of ${topic}, emphasizing practical relevance and real-life applications to engage learners.`
+            ],
+            [ // Intermediate
+                `Discuss the practical implications of ${topic} in various contexts, drawing connections between theory and real-world practice.`,
+                `Examine the underlying principles of ${topic} and their significance in solving complex problems across different domains.`,
+                `Explore the interdisciplinary aspects of ${topic}, exploring its connections with diverse fields and disciplines.`
+            ],
+            [ // Advanced
+                `Critically evaluate the current state of ${topic}, discussing emerging trends and challenges in the field.`,
+                `Synthesize the latest advancements in ${topic}, presenting a comprehensive overview of current research directions and future prospects.`,
+                `Analyze the advanced theories and methodologies of ${topic}, providing critical insights into its applications and limitations.`
+            ]
         ],
-        [ // Advanced
-          "Delve into the advanced theories and methodologies of {topic}, exploring cutting-edge research and developments.",
-          "Discuss the cutting-edge developments in {topic}, exploring emerging technologies and their potential impact on the field.",
-          "Analyze the advanced theories and methodologies of {topic}, providing critical insights into its applications and limitations."
+        [ // storytelling
+            [ // Beginner
+                `Engage beginners by narrating a story that illustrates the foundational concepts of ${topic}, making learning enjoyable and memorable.`,
+                `Tell a story that simplifies the understanding of ${topic} for beginners, using clear language and relatable examples.`,
+                `Narrate a story that highlights the practical applications of ${topic} in everyday life, helping beginners connect with the subject.`
+            ],
+            [ // Intermediate
+                `Weave a narrative around ${topic} to demonstrate its relevance and practical significance, helping learners understand its real-world implications.`,
+                `Engage learners by narrating a story that showcases the interdisciplinary nature of ${topic}, highlighting its connections with diverse fields.`,
+                `Tell a story that explores the historical context of ${topic}, tracing its development over time and its impact on society.`
+            ],
+            [ // Advanced
+                `Craft a compelling narrative that delves into the ethical dilemmas associated with ${topic}, prompting reflection and critical thinking.`,
+                `Tell a story that imagines the future possibilities of ${topic}, exploring potential advancements and their implications for humanity.`,
+                `Narrate a story that examines the role of ${topic} in addressing global challenges, inspiring listeners to consider its broader impact.`
+            ]
         ]
-      ],
-      [ // with example
-        [ // Beginner
-          "Explain the basic principles of {topic} using everyday language and relatable examples to aid comprehension.",
-          "Break down the key components of {topic} into bite-sized pieces, making it easy for beginners to grasp the core concepts.",
-          "Provide a beginner-friendly overview of {topic}, emphasizing practical relevance and real-life applications to engage learners."
-        ],
-        [ // Intermediate
-          "Discuss the practical implications of {topic} in various contexts, drawing connections between theory and real-world practice.",
-          "Examine the underlying principles of {topic} and their significance in solving complex problems across different domains.",
-          "Explore the interdisciplinary aspects of {topic}, exploring its connections with diverse fields and disciplines."
-        ],
-        [ // Advanced
-          "Critically evaluate the current state of {topic}, discussing emerging trends and challenges in the field.",
-          "Synthesize the latest advancements in {topic}, presenting a comprehensive overview of current research directions and future prospects.",
-          "Analyze the advanced theories and methodologies of {topic}, providing critical insights into its applications and limitations."
-        ]
-      ],
-      [ // storytelling
-        [ // Beginner
-          "Engage beginners by narrating a story that illustrates the foundational concepts of {topic}, making learning enjoyable and memorable.",
-          "Tell a story that simplifies the understanding of {topic} for beginners, using clear language and relatable examples.",
-          "Narrate a story that highlights the practical applications of {topic} in everyday life, helping beginners connect with the subject."
-        ],
-        [ // Intermediate
-          "Weave a narrative around {topic} to demonstrate its relevance and practical significance, helping learners understand its real-world implications.",
-          "Engage learners by narrating a story that showcases the interdisciplinary nature of {topic}, highlighting its connections with diverse fields.",
-          "Tell a story that explores the historical context of {topic}, tracing its development over time and its impact on society."
-        ],
-        [ // Advanced
-          "Craft a compelling narrative that delves into the ethical dilemmas associated with {topic}, prompting reflection and critical thinking.",
-          "Tell a story that imagines the future possibilities of {topic}, exploring potential advancements and their implications for humanity.",
-          "Narrate a story that examines the role of {topic} in addressing global challenges, inspiring listeners to consider its broader impact."
-        ]
-      ]
     ],
     [ // Visual
-      [ // point-wise
-        [ // Beginner
-          "Explain the basic principles of {topic} using everyday language and relatable examples to aid comprehension.",
-          "Break down the key components of {topic} into bite-sized pieces, making it easy for beginners to grasp the core concepts.",
-          "Provide a beginner-friendly overview of {topic}, emphasizing practical relevance and real-life applications to engage learners."
+        [ // point-wise
+            [ // Beginner
+                `Explain the basic principles of ${topic} using everyday language and relatable examples to aid comprehension.`,
+                `Break down the key components of ${topic} into bite-sized pieces, making it easy for beginners to grasp the core concepts.`,
+                `Provide a beginner-friendly overview of ${topic}, emphasizing practical relevance and real-life applications to engage learners.`
+            ],
+            [ // Intermediate
+                `Explore the core principles and applications of ${topic}, emphasizing its role in different fields and industries.`,
+                `Discuss the practical implications of ${topic} in various contexts, drawing connections between theory and real-world practice.`,
+                `Examine the underlying principles of ${topic} and their significance in solving complex problems across different domains.`
+            ],
+            [ // Advanced
+                `Delve into the advanced theories and methodologies of ${topic}, exploring cutting-edge research and developments.`,
+                `Critically evaluate the current state of ${topic}, discussing emerging trends and challenges in the field.`,
+                `Explore the frontier of ${topic} research, addressing unresolved questions and proposing innovative solutions.`
+            ]
         ],
-        [ // Intermediate
-          "Explore the core principles and applications of {topic}, emphasizing its role in different fields and industries.",
-          "Discuss the practical implications of {topic} in various contexts, drawing connections between theory and real-world practice.",
-          "Examine the underlying principles of {topic} and their significance in solving complex problems across different domains."
+        [ // with example
+            [ // Beginner
+                `Introduce the fundamental concepts of ${topic} in a straightforward manner, focusing on building a solid understanding from the ground up.`,
+                `Provide an introductory overview of ${topic}, covering the basics in a way that is engaging and easy to follow.`,
+                `Explain the core principles of ${topic} in plain language, focusing on practical insights and everyday applications.`
+            ],
+            [ // Intermediate
+                `Discuss the core principles and applications of ${topic}, emphasizing its role in modern society and industry.`,
+                `Analyze the key components and methodologies of ${topic}, highlighting its importance in driving innovation and progress.`,
+                `Explore the interdisciplinary nature of ${topic}, investigating its connections with related fields and disciplines.`
+            ],
+            [ // Advanced
+                `Synthesize the latest advancements in ${topic}, presenting a comprehensive overview of current research directions and future prospects.`,
+                `Analyze the advanced theories and methodologies of ${topic}, providing critical insights into its applications and limitations.`,
+                `Examine the theoretical foundations of ${topic} in depth, discussing recent advancements and their implications.`
+            ]
         ],
-        [ // Advanced
-          "Delve into the advanced theories and methodologies of {topic}, exploring cutting-edge research and developments.",
-          "Critically evaluate the current state of {topic}, discussing emerging trends and challenges in the field.",
-          "Explore the frontier of {topic} research, addressing unresolved questions and proposing innovative solutions."
+        [ // storytelling
+            [ // Beginner
+                `Provide a beginner-friendly overview of ${topic} through a storytelling approach, engaging learners with relatable narratives.`,
+                `Narrate a simple story illustrating the application of ${topic} in real-life scenarios, making it easier for beginners to understand.`,
+                `Tell a story that highlights the importance of ${topic} in solving everyday problems, capturing the interest of beginner learners.`
+            ],
+            [ // Intermediate
+                `Weave a narrative around ${topic} to demonstrate its relevance and practical significance, helping learners understand its real-world implications.`,
+                `Engage learners by narrating a story that showcases the interdisciplinary nature of ${topic}, highlighting its connections with diverse fields.`,
+                `Tell a story that explores the historical context of ${topic}, tracing its development over time and its impact on society.`
+            ],
+            [ // Advanced
+                `Craft a compelling narrative that delves into the ethical dilemmas associated with ${topic}, prompting reflection and critical thinking.`,
+                `Tell a story that imagines the future possibilities of ${topic}, exploring potential advancements and their implications for humanity.`,
+                `Narrate a story that examines the role of ${topic} in addressing global challenges, inspiring viewers to consider its broader impact.`
+            ]
         ]
-      ],
-      [ // with example
-        [ // Beginner
-          "Introduce the fundamental concepts of {topic} in a straightforward manner, focusing on building a solid understanding from the ground up.",
-          "Provide an introductory overview of {topic}, covering the basics in a way that is engaging and easy to follow.",
-          "Explain the core principles of {topic} in plain language, focusing on practical insights and everyday applications."
-        ],
-        [ // Intermediate
-          "Discuss the core principles and applications of {topic}, emphasizing its role in modern society and industry.",
-          "Analyze the key components and methodologies of {topic}, highlighting its importance in driving innovation and progress.",
-          "Explore the interdisciplinary nature of {topic}, investigating its connections with related fields and disciplines."
-        ],
-        [ // Advanced
-          "Synthesize the latest advancements in {topic}, presenting a comprehensive overview of current research directions and future prospects.",
-          "Analyze the advanced theories and methodologies of {topic}, providing critical insights into its applications and limitations.",
-          "Examine the theoretical foundations of {topic} in depth, discussing recent advancements and their implications."
-        ]
-      ],
-      [ // storytelling
-        [ // Beginner
-          "Provide a beginner-friendly overview of {topic} through a storytelling approach, engaging learners with relatable narratives.",
-          "Narrate a simple story illustrating the application of {topic} in real-life scenarios, making it easier for beginners to understand.",
-          "Tell a story that highlights the importance of {topic} in solving everyday problems, capturing the interest of beginner learners."
-        ],
-        [ // Intermediate
-          "Weave a narrative around {topic} to demonstrate its relevance and practical significance, helping learners understand its real-world implications.",
-          "Engage learners by narrating a story that showcases the interdisciplinary nature of {topic}, highlighting its connections with diverse fields.",
-          "Tell a story that explores the historical context of {topic}, tracing its development over time and its impact on society."
-        ],
-        [ // Advanced
-          "Craft a compelling narrative that delves into the ethical dilemmas associated with {topic}, prompting reflection and critical thinking.",
-          "Tell a story that imagines the future possibilities of {topic}, exploring potential advancements and their implications for humanity.",
-          "Narrate a story that examines the role of {topic} in addressing global challenges, inspiring viewers to consider its broader impact."
-        ]
-      ]
     ],
     [ // Verbal
-      [ // point-wise
-        [ // Beginner
-          "Explain the basic principles of {topic} using everyday language and relatable examples to aid comprehension.",
-          "Break down the key components of {topic} into bite-sized pieces, making it easy for beginners to grasp the core concepts.",
-          "Provide a beginner-friendly overview of {topic}, emphasizing practical relevance and real-life applications to engage learners."
+        [ // point-wise
+            [ // Beginner
+                `Explain the basic principles of ${topic} using everyday language and relatable examples to aid comprehension.`,
+                `Break down the key components of ${topic} into bite-sized pieces, making it easy for beginners to grasp the core concepts.`,
+                `Provide a beginner-friendly overview of ${topic}, emphasizing practical relevance and real-life applications to engage learners.`
+            ],
+            [ // Intermediate
+                `Discuss the practical implications of ${topic} in various contexts, drawing connections between theory and real-world practice.`,
+                `Examine the underlying principles of ${topic} and their significance in solving complex problems across different domains.`,
+                `Explore the interdisciplinary aspects of ${topic}, exploring its connections with diverse fields and disciplines.`
+            ],
+            [ // Advanced
+                `Delve into the advanced theories and methodologies of ${topic}, exploring cutting-edge research and developments.`,
+                `Critically evaluate the current state of ${topic}, discussing emerging trends and challenges in the field.`,
+                `Explore the frontier of ${topic} research, addressing unresolved questions and proposing innovative solutions.`
+            ]
         ],
-        [ // Intermediate
-          "Discuss the practical implications of {topic} in various contexts, drawing connections between theory and real-world practice.",
-          "Examine the underlying principles of {topic} and their significance in solving complex problems across different domains.",
-          "Explore the interdisciplinary aspects of {topic}, exploring its connections with diverse fields and disciplines."
+        [ // with example
+            [ // Beginner
+                `Introduce the fundamental concepts of ${topic} in a straightforward manner, focusing on building a solid understanding from the ground up.`,
+                `Provide an introductory overview of ${topic}, covering the basics in a way that is engaging and easy to follow.`,
+                `Explain the core principles of ${topic} in plain language, focusing on practical insights and everyday applications.`
+            ],
+            [ // Intermediate
+                `Discuss the core principles and applications of ${topic}, emphasizing its role in modern society and industry.`,
+                `Analyze the key components and methodologies of ${topic}, highlighting its importance in driving innovation and progress.`,
+                `Explore the interdisciplinary nature of ${topic}, investigating its connections with related fields and disciplines.`
+            ],
+            [ // Advanced
+                `Synthesize the latest advancements in ${topic}, presenting a comprehensive overview of current research directions and future prospects.`,
+                `Analyze the advanced theories and methodologies of ${topic}, providing critical insights into its applications and limitations.`,
+                `Examine the theoretical foundations of ${topic} in depth, discussing recent advancements and their implications.`
+            ]
         ],
-        [ // Advanced
-          "Delve into the advanced theories and methodologies of {topic}, exploring cutting-edge research and developments.",
-          "Critically evaluate the current state of {topic}, discussing emerging trends and challenges in the field.",
-          "Explore the frontier of {topic} research, addressing unresolved questions and proposing innovative solutions."
+        [ // storytelling
+            [ // Beginner
+                `Provide a beginner-friendly overview of ${topic} through a storytelling approach, engaging learners with relatable narratives.`,
+                `Narrate a simple story illustrating the application of ${topic} in real-life scenarios, making it easier for beginners to understand.`,
+                `Tell a story that highlights the importance of ${topic} in solving everyday problems, capturing the interest of beginner learners.`
+            ],
+            [ // Intermediate
+                `Weave a narrative around ${topic} to demonstrate its relevance and practical significance, helping learners understand its real-world implications.`,
+                `Engage learners by narrating a story that showcases the interdisciplinary nature of ${topic}, highlighting its connections with diverse fields.`,
+                `Tell a story that explores the historical context of ${topic}, tracing its development over time and its impact on society.`
+            ],
+            [ // Advanced
+                `Craft a compelling narrative that delves into the ethical dilemmas associated with ${topic}, prompting reflection and critical thinking.`,
+                `Tell a story that imagines the future possibilities of ${topic}, exploring potential advancements and their implications for humanity.`,
+                `Narrate a story that examines the role of ${topic} in addressing global challenges, inspiring viewers to consider its broader impact.`
+            ]
         ]
-      ],
-      [ // with example
-        [ // Beginner
-          "Introduce the fundamental concepts of {topic} in a straightforward manner, focusing on building a solid understanding from the ground up.",
-          "Provide an introductory overview of {topic}, covering the basics in a way that is engaging and easy to follow.",
-          "Explain the core principles of {topic} in plain language, focusing on practical insights and everyday applications."
-        ],
-        [ // Intermediate
-          "Discuss the core principles and applications of {topic}, emphasizing its role in modern society and industry.",
-          "Analyze the key components and methodologies of {topic}, highlighting its importance in driving innovation and progress.",
-          "Explore the interdisciplinary nature of {topic}, investigating its connections with related fields and disciplines."
-        ],
-        [ // Advanced
-          "Synthesize the latest advancements in {topic}, presenting a comprehensive overview of current research directions and future prospects.",
-          "Analyze the advanced theories and methodologies of {topic}, providing critical insights into its applications and limitations.",
-          "Examine the theoretical foundations of {topic} in depth, discussing recent advancements and their implications."
-        ]
-      ],
-      [ // storytelling
-        [ // Beginner
-          "Provide a beginner-friendly overview of {topic} through a storytelling approach, engaging learners with relatable narratives.",
-          "Narrate a simple story illustrating the application of {topic} in real-life scenarios, making it easier for beginners to understand.",
-          "Tell a story that highlights the importance of {topic} in solving everyday problems, capturing the interest of beginner learners."
-        ],
-        [ // Intermediate
-          "Weave a narrative around {topic} to demonstrate its relevance and practical significance, helping learners understand its real-world implications.",
-          "Engage learners by narrating a story that showcases the interdisciplinary nature of {topic}, highlighting its connections with diverse fields.",
-          "Tell a story that explores the historical context of {topic}, tracing its development over time and its impact on society."
-        ],
-        [ // Advanced
-          "Craft a compelling narrative that delves into the ethical dilemmas associated with {topic}, prompting reflection and critical thinking.",
-          "Tell a story that imagines the future possibilities of {topic}, exploring potential advancements and their implications for humanity.",
-          "Narrate a story that examines the role of {topic} in addressing global challenges, inspiring listeners to consider its broader impact."
-        ]
-      ]
     ]
-  
-  
-  
-  ]
+]
 
   const options = ["point-wise", "storytelling", "with example"]; // Define options for the dropdown
 
@@ -216,16 +215,20 @@ function ChatBot({categor,setCategory}) {
     console.log(prompts[category][selectedValue][level]);
     console.log(category);
     console.log(level);
-    console.log(mcha);
+    console.log(message);
       const prompt = prompts[category][selectedValue][level][0];
-      prompt.replace("{topic}",message)
+      
 
 
         setsaved(curr);
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
-        let text = response.text().split("\n");
+        const textt = response.text().split("\n").join("");
+        const text = textt.replace(/\*{2,}|\(\)|\[\]/g, ''); // Remove consecutive asterisks and empty brackets
+
+  
+
 
 
         let msgs = [...chats]; // Copying the array to avoid mutating state directly
@@ -281,7 +284,7 @@ function ChatBot({categor,setCategory}) {
           name="message"
           value={message}
           placeholder="Type a message here and hit Enter..."
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => {setMessage(e.target.value);setTopic(e.target.value);console.log(message);}}
         />
         <div className="custom-dropdown">
           <div className="dropdown-header" onClick={() => setIsOpen(!isOpen)}>
