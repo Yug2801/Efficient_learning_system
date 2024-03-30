@@ -1,7 +1,7 @@
-function Header() {
+function Header({dispatch}) {
   return (
     <header className='app-header'>
-      <h1>The React Quiz</h1>
+      <h1>learning Personality Test</h1>
     </header>
   );
 }
